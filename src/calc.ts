@@ -7,7 +7,9 @@ function parseFractionOrNumber(val: string | number): [number, number] {
 
   if (typeof val === "string") {
     if (val.includes("/")) {
-      const [num, denom] = val.split("/").map(Number);
+      const parts = val.split("/").map(Number);
+      const num = parts[0] || 0;
+      const denom = parts[1] || 1;
       return [num, denom];
     }
 

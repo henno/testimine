@@ -12,7 +12,7 @@ describe("add", () => {
   	expect(add("1/3", "1/3")).toBe("2/3")
   });
   it("viskab vea, kui sisend sisaldab objekti", ()=> {
-  	expect(() => add({},2)).toThrow("Vigane sisend");
+  	expect(() => add({} as any, 2)).toThrow("Vigane sisend");
   })
 });
 
@@ -34,6 +34,6 @@ describe("subtract", () => {
   });
 
   it("viskab vea, kui sisend sisaldab objekti", () => {
-    expect(() => subtract({}, 2)).toThrow("Vigane sisend");
+    expect(() => subtract({} as any, 2)).toThrow("Vigane sisend");
   });
 });
