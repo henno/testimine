@@ -19,13 +19,17 @@ function parseFractionOrNumber(val: string | number): [number, number] {
 }
 
 export function add(a: string | number, b: string | number): string | number {
+  if (typeof a === 'object' || typeof b === 'object') {
+    throw new Error("Vigane sisend");
+  }
+
   const [aNum, aDen] = parseFractionOrNumber(a);
   const [bNum, bDen] = parseFractionOrNumber(b);
 
   const commonDen = aDen * bDen;
   const newNumerator = aNum * bDen + bNum * aDen;
 
-  const divisor = gcd(newNumerator, commonDen);
+  const divisor = gcd(Math.abs(newNumerator), commonDen);
   const simplifiedNum = newNumerator / divisor;
   const simplifiedDen = commonDen / divisor;
 
@@ -36,7 +40,24 @@ export function add(a: string | number, b: string | number): string | number {
 }
 
 
-export function subtract(a: number, b: number): number {
-  return a - b;
+export function subtract(a: string | number, b: string | number): string | number {
+  if (typeof a === 'object' || typeof b === 'object') {
+    throw new Error("Vigane sisend");
+  }
+
+  const [aNum, aDen] = parseFractionOrNumber(a);
+  const [bNum, bDen] = parseFractionOrNumber(b);
+
+  const commonDen = aDen * bDen;
+  const newNumerator = aNum * bDen - bNum * aDen;
+
+  const divisor = gcd(Math.abs(newNumerator), commonDen);
+  const simplifiedNum = newNumerator / divisor;
+  const simplifiedDen = commonDen / divisor;
+
+  // Kui nimetaja on 1, tagasta number
+  if (simplifiedDen === 1) return simplifiedNum;
+
+  return `${simplifiedNum}/${simplifiedDen}`;
 }
 
