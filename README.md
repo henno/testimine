@@ -1,15 +1,49 @@
-# calc
+# TAK24 Testimine
 
-To install dependencies:
+Lihtne TypeScript kalkulaatori rakendus koos testimisfunktsioonidega.
+
+## Paigaldamine
 
 ```bash
 bun install
 ```
 
-To run:
+## Käivitamine
 
 ```bash
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.2.8. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Testimine
+
+Kõikide testide käivitamine:
+```bash
+bun test
+```
+
+Ühe testi käivitamine:
+```bash
+bun test tests/calc.test.ts
+```
+
+Kindla kirjeldusega testi käivitamine:
+```bash
+bun test --pattern "add"
+```
+
+## Tüüpide kontrollimine
+
+```bash
+bun run --bun tsc
+```
+
+## Koodistiil
+
+Kood on vormindatud Prettier'i abil:
+```bash
+bunx prettier --write .
+```
+
+---
+
+*Projekt on loodud kasutades `bun init` bun v1.2.8 abil. [Bun](https://bun.sh) on kiire kõik-ühes JavaScript runtime.*
